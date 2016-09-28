@@ -1,0 +1,24 @@
+div
+  include top.jade
+  div.row
+    div.col-md-12.col-xs-12
+      div.x_panel
+        div.x_title
+          h2 General Settings
+          div.clearfix
+        div.x_content
+          br
+          form.form-horizontal.form-label-left(action="#{App.getBaseUrl()}admin/?page=admin/system/setting.html&type=setting", method="post",  enctype="multipart/form-data")
+            each item in form
+              case item.type
+                when "TEXT"
+                  include controls/TEXT.jade
+                when "IMAGE"
+                  include controls/IMAGE.jade
+            div #{Hook.doAction('edit_settings')} 
+            div.ln_solid
+            div.form-group
+              div.col-md-9.col-sm-9.col-xs-12.col-md-offset-3
+                button(type="submit", class="btn btn-primary") Cancel
+                button(type="submit", class="btn btn-success") Submit
+div.clearfix

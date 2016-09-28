@@ -1,0 +1,8 @@
+div.form-group
+  label.control-label.col-md-3.col-sm-3.col-xs-12 
+    | #{item.text}
+  div.col-md-9.col-sm-9.col-xs-12
+    label(class="btn btn-primary btn-dark file")
+      i(class="fa fa-upload")
+      |&nbsp; Upload
+      input(type="file", value="Upload", name=item.name)

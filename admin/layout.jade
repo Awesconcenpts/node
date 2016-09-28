@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    link(rel='stylesheet', href=App.getBaseUrl()+'assets/css/bootstrap.min.css')
+    link(rel='stylesheet', href=App.getBaseUrl()+'assets/css/font-awesome.min.css')
+    title= title
+    link(rel='stylesheet', href=App.getBaseUrl()+'assets/css/custom.css')
+    script(type='text/javascript', src=App.getBaseUrl()+'assets/js/jquery.min.js')
+  body.nav-md.loading
+    div.container.body
+      div.main_container
+        include sidebar
+        include header
+        div.right_col
+          block content
+        include footer
+    script(type='text/javascript', src=App.getBaseUrl()+'assets/js/bootstrap.min.js')
+    script(type='text/javascript', src=App.getBaseUrl()+'assets/js/custom.js')

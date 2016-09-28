@@ -1,0 +1,58 @@
+div.col-md-3.left_col
+  div.left_col.scroll-view
+    div.navbar.nav_title(style="min-height:10px; height:10px")
+      //-a(href="index.html").site_title
+        //-i.fa.fa-paw
+        //-span 
+        //-| #{App.getConfig('name')}
+        //-img(class="center", src="/images/#{App.getConfig('logo')}", width="85%", style="margin:0px 10% 0px 5%;")
+    div.clearfix
+    div.profile
+      div.profile_pic
+        img(src="/images/#{App.getUsers('image')}", alt="#{App.getUsers('first_name')} #{App.getUsers('last_name')}").img-circle.profile_img
+      div.profile_info
+        span Welcome
+        h2 #{App.getUsers('first_name')} #{App.getUsers('last_name')}
+    br
+    div#sidebar-menu.main_menu_side.hidden-print.main_menu
+      div.menu_section
+        h3 &nbsp;
+        ul.nav.side-menu
+          -var ac=''
+          -if(App.getUrl('type')=='home')ac='current-page'
+          li(class=ac)
+            a(href="/admin/")
+              i.fa.fa-home 
+              |&nbsp;Home 
+          each item in App.getInstalledModules()
+            -var active=''
+            -if(item.name==App.getUrl('type'))active='current-page'
+            li(class=active)
+              - var u='javascript:void(0)'
+              - if(typeof(item.childs)=='undefined')u='?page=plugins/'+item.name+'/'+item.name+'.html&type='+item.name;
+              a(href='#{u}')
+                i.fa.fa-edit 
+                |&nbsp;#{item.menu}
+                - if(typeof(item.childs)!=='undefined') {
+                span.fa.fa-chevron-down
+                - }
+              - if(typeof(item.childs)!=='undefined') {
+              ul.nav.child_menu
+                li
+                  a(href="form.html") General Form
+              - }
+          -var active=''
+          -if('setting'==App.getUrl('type'))active='current-page'
+          li(class=active)
+            a(href="/admin/?page=admin/system/setting.html&type=setting")
+              i.fa.fa-cog 
+              |&nbsp;Setting 
+    div.sidebar-footer.hidden-small
+      a(data-toggle="tooltip", data-placement="top", title="Settings", href="/admin/?page=admin/system/setting.html&type=setting")
+        span.glyphicon.glyphicon-cog(aria-hidden="true")
+      a(data-toggle="tooltip", data-placement="top", title="FullScreen", onclick='App.fullScreen()')
+        span.glyphicon.glyphicon-fullscreen(aria-hidden="true")
+      a(data-toggle="tooltip", data-placement="top", title="Front View", href="../")
+        span.glyphicon.glyphicon-share(aria-hidden="true")
+      a(data-toggle="tooltip", data-placement="top", title="Logout" href="admin/logout")
+        span.glyphicon.glyphicon-off(aria-hidden="true")

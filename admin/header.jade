@@ -1,0 +1,15 @@
+div.top_nav
+  div.nav_menu
+    nav
+      div.nav.toggle
+        a#menu_toggle
+          i.fa.fa-bars
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(href="#{App.getBaseUrl()}admin/logout", class="user-profile dropdown-toggle", style="position: relative;",  data-toggle="tooltip", data-placement="bottom", title="", data-original-title="Logout" )
+            span(aria-hidden="true", class="glyphicon glyphicon-off" style="font-size: 20px;position: absolute;top: 20px;")
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        li
+          a(href="?page=admin/system/account.html", class="user-profile dropdown-toggle", data-toggle="tooltip", data-placement="bottom", title="", data-original-title="Edit Profile" )
+            img(src="/images/#{App.getUsers('image')}", alt="#{App.getUsers('first_name')} #{App.getUsers('last_name')}")
+            | Edit Profile
